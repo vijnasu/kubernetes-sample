@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grpc-server-deployment
+  labels:
+    app: grpc-server
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: grpc-server
+  template:
+    metadata:
+      labels:
+        app: grpc-server
+    spec:
+      containers:
+      - name: grpc-server
+        image: "{{ .Values.server.image.repository }}:{{ .Values.server.image.tag }}"
+        imagePullPolicy: {{ .Values.server.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.server.service.targetPort }}
+

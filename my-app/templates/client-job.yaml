@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: grpc-client-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: grpc-client
+        image: "{{ .Values.client.image.repository }}:{{ .Values.client.image.tag }}"
+        imagePullPolicy: {{ .Values.client.image.pullPolicy }}
+      restartPolicy: Never
+

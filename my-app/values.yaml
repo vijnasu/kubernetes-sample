@@ -1,0 +1,18 @@
+replicaCount: 1
+
+server:
+  image:
+    repository: grpc-server
+    pullPolicy: IfNotPresent
+    tag: "latest"
+  service:
+    type: NodePort
+    port: 80
+    targetPort: 912
+
+client:
+  image:
+    repository: grpc-client
+    pullPolicy: IfNotPresent
+    tag: "latest"
+
