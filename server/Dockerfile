@@ -13,6 +13,8 @@ ADD . /app
 # Install any needed packages specified in requirements.txt
 RUN pip install --trusted-host pypi.python.org grpcio-tools
 
+ENV http_proxy=''
+ENV https_proxy=''
+
 # Run server.py when the container launches
 CMD ["python", "server.py"]
-
